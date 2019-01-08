@@ -4,6 +4,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>Toeic Online Learning</display-name>
+	
+	<listener>
+        <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+    </listener>
+    
 	<filter>
 		<filter-name>sitemesh</filter-name>
 		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>

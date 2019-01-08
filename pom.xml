@@ -9,10 +9,12 @@
 	<name>news-project</name>
 
 	<properties>
-		<servlet.api.version>4.0.1</servlet.api.version>
-		<jsp.api.version>2.3.3</jsp.api.version>
+		<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+		<javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
 		<jstl.version>1.2</jstl.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
+		<mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+		<weld-servlet.version>1.1.0.Final</weld-servlet.version>
 
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -23,14 +25,14 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
+			<version>${javax.servlet-api.version}</version>
 		</dependency>
 
 		<!--JSP API -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>${jsp.api.version}</version>
+			<version>${javax.servlet.jsp-api.version}</version>
 		</dependency>
 
 		<!-- JSTL -->
@@ -47,5 +49,33 @@
 			<version>${sitemesh.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>${weld-servlet.version}</version>
+		</dependency>
+
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
