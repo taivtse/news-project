@@ -1,17 +1,19 @@
-package com.laptrinhjavaweb.mapper;
+package com.laptrinhjavaweb.mapper.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.laptrinhjavaweb.mapper.IRowMapper;
 import com.laptrinhjavaweb.model.CategoryModel;
 
-public class CategoryMapper implements RowMapper<CategoryModel>{
+public class CategoryMapper extends AbstractMapper implements IRowMapper<CategoryModel> {
 
 	@Override
 	public CategoryModel mapRow(ResultSet resultSet) {
 		try {
 			CategoryModel model = new CategoryModel();
-			model.setId(resultSet.getLong("id"));
+			this.abstractModelMapRow(resultSet, model);
+
 			model.setCode(resultSet.getString("code"));
 			model.setName(resultSet.getString("name"));
 			return model;

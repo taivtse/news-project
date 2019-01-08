@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.laptrinhjavaweb.dao.GenericDAO;
-import com.laptrinhjavaweb.mapper.RowMapper;
+import com.laptrinhjavaweb.mapper.IRowMapper;
 
 public class AbstractDAO<T> implements GenericDAO<T>{
 	public Connection getConnection() {
@@ -23,7 +23,7 @@ public class AbstractDAO<T> implements GenericDAO<T>{
 	}
 
 	@Override
-	public List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
+	public List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters) {
 		List<T> results = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

@@ -1,5 +1,9 @@
 package com.laptrinhjavaweb.service;
 
-public interface INewsService{
+import com.laptrinhjavaweb.model.NewsModel;
 
+import java.util.List;
+
+public interface INewsService{
+    List<NewsModel> findByCategoryId(Long categoryId);
 }
