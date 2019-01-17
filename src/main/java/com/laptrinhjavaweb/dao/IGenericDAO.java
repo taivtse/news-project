@@ -1,11 +1,11 @@
 package com.laptrinhjavaweb.dao;
 
-import java.util.List;
-
 import com.laptrinhjavaweb.mapper.IRowMapper;
+
+import java.util.List;
 
 public interface IGenericDAO<T> {
 	List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters);
-	void update(String sql, Object... parameters);
-    Long insert(String sql, Object... parameters);
+	void modifiedData(String sql, Object... parameters) throws Exception;
+    Long insertData(String sql, Object... parameters) throws Exception;
 }

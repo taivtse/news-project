@@ -1,11 +1,17 @@
 package com.laptrinhjavaweb.dao;
 
-import java.util.List;
-
 import com.laptrinhjavaweb.model.NewsModel;
 
+import java.util.List;
+
 public interface INewsDAO extends IGenericDAO<NewsModel> {
-	List<NewsModel> findByCategoryId(Long categoryId);
-	Long save(NewsModel model);
-    Long update(NewsModel model);
+    List<NewsModel> findByCategoryId(Long categoryId);
+
+    NewsModel findById(Long id);
+
+    Long save(NewsModel model) throws Exception;
+
+    void update(NewsModel model) throws Exception;
+
+    void delete(Long id) throws Exception;
 }

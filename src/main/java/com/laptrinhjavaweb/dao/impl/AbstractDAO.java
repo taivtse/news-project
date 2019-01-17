@@ -1,12 +1,12 @@
 package com.laptrinhjavaweb.dao.impl;
 
+import com.laptrinhjavaweb.dao.IGenericDAO;
+import com.laptrinhjavaweb.mapper.IRowMapper;
+
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.laptrinhjavaweb.dao.IGenericDAO;
-import com.laptrinhjavaweb.mapper.IRowMapper;
 
 public class AbstractDAO<T> implements IGenericDAO<T> {
     public Connection getConnection() {
@@ -23,7 +23,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
     }
 
     @Override
-    public List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters) {
+    public List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters){
         List<T> results = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -39,7 +39,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
             }
 
             return results;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         } finally {
@@ -63,7 +63,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
     }
 
     @Override
-    public void update(String sql, Object... parameters) {
+    public void modifiedData(String sql, Object... parameters) throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -80,9 +80,11 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                     connection.rollback();
                 } catch (SQLException e1) {
                     e1.printStackTrace();
+                    throw e;
                 }
             }
             e.printStackTrace();
+            throw e;
         } finally {
             try {
                 if (connection != null) {
@@ -98,15 +100,17 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                         connection.rollback();
                     } catch (SQLException e1) {
                         e1.printStackTrace();
+                        throw e;
                     }
                 }
                 e.printStackTrace();
+                throw e;
             }
         }
     }
 
     @Override
-    public Long insert(String sql, Object... parameters) {
+    public Long insertData(String sql, Object... parameters) throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -130,10 +134,11 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                     connection.rollback();
                 } catch (SQLException e1) {
                     e1.printStackTrace();
+                    throw e;
                 }
             }
             e.printStackTrace();
-            return null;
+            throw e;
         } finally {
             try {
                 if (connection != null) {
@@ -149,12 +154,12 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                return null;
+                throw e;
             }
         }
     }
 
-    private void setParameters(PreparedStatement preparedStatement, Object... parameters) {
+    private void setParameters(PreparedStatement preparedStatement, Object... parameters) throws Exception {
         try {
             for (int i = 0; i < parameters.length; i++) {
                 Object parameter = parameters[i];
@@ -194,13 +199,14 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                     preparedStatement.setTimestamp(index, (Timestamp) parameter);
 
                 } else if (parameter == null) {
-                    preparedStatement.setNull(index, java.sql.Types.INTEGER);
+                    preparedStatement.setNull(index, Types.NULL);
                 } else {
                     throw new Exception("Chưa hỗ trợ parameter có kiểu: " + parameter.getClass().getName());
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw e;
         }
     }
 }

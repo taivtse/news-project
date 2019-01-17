@@ -30,12 +30,12 @@ public class HomeController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NewsModel model = new NewsModel();
+        /*NewsModel model = new NewsModel();
         model.setTitle("title1");
         model.setContent("content2");
         model.setCategoryId(2L);
 
-        newsService.save(model);
+        newsService.save(model);*/
 
 
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
