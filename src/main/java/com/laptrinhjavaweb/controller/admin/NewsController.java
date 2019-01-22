@@ -3,6 +3,7 @@ package com.laptrinhjavaweb.controller.admin;
 import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.service.INewsService;
+import com.laptrinhjavaweb.util.FormUtil;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,23 +21,12 @@ public class NewsController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NewsModel model = new NewsModel();
-
-        String pageStr = req.getParameter("page");
-        if (pageStr != null) {
-            model.setPage(Integer.parseInt(pageStr));
-        }
-
-        String maxPageItemsStr = req.getParameter("maxPageItems");
-        if (maxPageItemsStr != null) {
-            model.setMaxPageItems(Long.parseLong(maxPageItemsStr));
-        }
+        NewsModel model = FormUtil.populate(NewsModel.class, req);
 
         model.setTotalItems(newsService.count());
         model.setTotalPages((int) Math.ceil((double) model.getTotalItems() / model.getMaxPageItems()));
 
         Long offset = (model.getPage() - 1) * model.getMaxPageItems();
-
         model.setListResult(newsService.findAll(offset, model.getMaxPageItems()));
 
         req.setAttribute(SystemConstant.MODEL, model);

@@ -11,7 +11,8 @@
             <page-encoding>UTF-8</page-encoding>
         </jsp-property-group>
     </jsp-config>
-	
+
+    <!-- add listener for servlet weld -->
 	<listener>
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
