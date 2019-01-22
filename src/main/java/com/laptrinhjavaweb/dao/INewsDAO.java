@@ -5,7 +5,7 @@ import com.laptrinhjavaweb.model.NewsModel;
 import java.util.List;
 
 public interface INewsDAO extends IGenericDAO<NewsModel> {
-    List<NewsModel> findAll();
+    List<NewsModel> findAll(Long offset, Long limit);
 
     List<NewsModel> findByCategoryId(Long categoryId);
 
@@ -16,4 +16,6 @@ public interface INewsDAO extends IGenericDAO<NewsModel> {
     void update(NewsModel model) throws Exception;
 
     void delete(Long id) throws Exception;
+
+    Long count();
 }

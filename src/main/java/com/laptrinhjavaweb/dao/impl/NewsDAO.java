@@ -9,9 +9,9 @@ import java.util.List;
 public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 
     @Override
-    public List<NewsModel> findAll() {
-        String sql = "SELECT * FROM news";
-        return this.query(sql, new NewsMapper());
+    public List<NewsModel> findAll(Long offset, Long limit) {
+        String sql = "SELECT * FROM news LIMIT ? OFFSET ?";
+        return this.query(sql, new NewsMapper(), limit, offset);
     }
 
     @Override
@@ -46,6 +46,12 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
     public void delete(Long id) throws Exception {
         String sql = "DELETE FROM news WHERE id = ?";
         this.modifiedData(sql, id);
+    }
+
+    @Override
+    public Long count() {
+        String sql = "SELECT COUNT(*) FROM news";
+        return this.count(sql);
     }
 
 }

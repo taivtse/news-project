@@ -14,8 +14,8 @@ public class NewsService implements INewsService {
     INewsDAO newsDAO;
 
     @Override
-    public List<NewsModel> findAll() {
-        return newsDAO.findAll();
+    public List<NewsModel> findAll(Long offset, Long limit) {
+        return newsDAO.findAll(offset, limit);
     }
 
     @Override
@@ -54,6 +54,11 @@ public class NewsService implements INewsService {
 //            delete comment before delete news
             newsDAO.delete(id);
         }
+    }
+
+    @Override
+    public Long count() {
+        return newsDAO.count();
     }
 
 }

@@ -23,7 +23,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
     }
 
     @Override
-    public List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters){
+    public List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters) {
         List<T> results = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -74,7 +74,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 
             preparedStatement.executeUpdate();
             connection.commit();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             if (connection != null) {
                 try {
                     connection.rollback();
@@ -128,7 +128,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
             }
             connection.commit();
             return generateId;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             if (connection != null) {
                 try {
                     connection.rollback();
@@ -161,8 +161,36 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 
     @Override
     public Long count(String sql, Object... parameters) {
-
-        return null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Long count = 0L;
+            connection = getConnection();
+            statement = connection.prepareStatement(sql);
+            setParameters(statement, parameters);
+            resultSet = statement.executeQuery();
+            resultSet.next();
+            count = resultSet.getLong(1);
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0L;
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                return 0L;
+            }
+        }
     }
 
     private void setParameters(PreparedStatement preparedStatement, Object... parameters) throws Exception {
