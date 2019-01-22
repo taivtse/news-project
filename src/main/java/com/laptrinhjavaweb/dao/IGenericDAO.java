@@ -8,4 +8,5 @@ public interface IGenericDAO<T> {
 	List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters);
 	void modifiedData(String sql, Object... parameters) throws Exception;
     Long insertData(String sql, Object... parameters) throws Exception;
+    Long count(String sql, Object... parameters);
 }

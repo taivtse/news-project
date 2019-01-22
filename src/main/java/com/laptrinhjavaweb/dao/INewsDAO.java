@@ -5,6 +5,8 @@ import com.laptrinhjavaweb.model.NewsModel;
 import java.util.List;
 
 public interface INewsDAO extends IGenericDAO<NewsModel> {
+    List<NewsModel> findAll();
+
     List<NewsModel> findByCategoryId(Long categoryId);
 
     NewsModel findById(Long id);

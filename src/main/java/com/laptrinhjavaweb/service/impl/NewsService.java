@@ -14,6 +14,11 @@ public class NewsService implements INewsService {
     INewsDAO newsDAO;
 
     @Override
+    public List<NewsModel> findAll() {
+        return newsDAO.findAll();
+    }
+
+    @Override
     public List<NewsModel> findByCategoryId(Long categoryId) {
         return newsDAO.findByCategoryId(categoryId);
     }

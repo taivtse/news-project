@@ -4,6 +4,13 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>Toeic Online Learning</display-name>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
 	
 	<listener>
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>

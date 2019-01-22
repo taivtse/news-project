@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         <dec:title default="Admin page"></dec:title>
     </title>
-    <meta charset="utf-8"/>
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css'/>"/>
     <link rel="stylesheet" href="<c:url value='/template/admin/assets/font-awesome/4.2.0/css/font-awesome.min.css' />"/>
@@ -20,7 +21,7 @@
     <%-- jquery library --%>
     <script src="<c:url value='/template/admin/assets/js/jquery.2.1.1.min.js'/>"></script>
     <%-- my custome css --%>
-    <link rel="stylesheet" href="<c:url value="template/admin/css/global_admin_style.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/admin/css/global_admin_style.css"/>">
     <dec:head></dec:head>
 </head>
 <body class="no-skin">
@@ -57,7 +58,13 @@
 <!-- ace scripts -->
 <script src="<c:url value='/template/admin/assets/js/ace-elements.min.js'/>"></script>
 <script src="<c:url value='/template/admin/assets/js/ace.min.js'/>"></script>
+
+<%-- twps pagination --%>
+<script src="<c:url value='/template/library/jquery.twbsPagination.min.js'/>"></script>
+
 <%-- my custom js --%>
 <script src="<c:url value="/template/admin/js/global_admin_script.js"/>"></script>
+
+<dec:getProperty property="page.local_script"></dec:getProperty>
 </body>
 </html>

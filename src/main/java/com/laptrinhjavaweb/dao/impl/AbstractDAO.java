@@ -159,6 +159,12 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
         }
     }
 
+    @Override
+    public Long count(String sql, Object... parameters) {
+
+        return null;
+    }
+
     private void setParameters(PreparedStatement preparedStatement, Object... parameters) throws Exception {
         try {
             for (int i = 0; i < parameters.length; i++) {

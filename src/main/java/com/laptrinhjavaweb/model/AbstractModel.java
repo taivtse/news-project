@@ -1,8 +1,9 @@
 package com.laptrinhjavaweb.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-public class AbstractModel {
+public class AbstractModel<T> {
 
     private Long id;
     private Timestamp createdDate;
@@ -10,6 +11,11 @@ public class AbstractModel {
     private String createdBy;
     private String modifiedBy;
     private Long[] ids;
+    private List<T> listResult;
+    private int maxPageItems = 2;
+    private int totalItems;
+    private int page = 1;
+    private int totalPages;
 
     public Long getId() {
         return id;
@@ -57,5 +63,45 @@ public class AbstractModel {
 
     public void setIds(Long[] ids) {
         this.ids = ids;
+    }
+
+    public List<T> getListResult() {
+        return listResult;
+    }
+
+    public void setListResult(List<T> listResult) {
+        this.listResult = listResult;
+    }
+
+    public int getMaxPageItems() {
+        return maxPageItems;
+    }
+
+    public void setMaxPageItems(int maxPageItems) {
+        this.maxPageItems = maxPageItems;
+    }
+
+    public int getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(int totalItems) {
+        this.totalItems = totalItems;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
     }
 }

@@ -1,10 +1,7 @@
 package com.laptrinhjavaweb.controller.admin;
 
-import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.service.ICategoryService;
 import com.laptrinhjavaweb.service.INewsService;
-
-import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -13,14 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/admin-home"})
 public class HomeController extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
     @Inject
     private ICategoryService categoryService;
