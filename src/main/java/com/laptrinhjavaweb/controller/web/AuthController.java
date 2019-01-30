@@ -18,9 +18,9 @@ public class AuthController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getRequestURI().equals("/dang-nhap")) {
+        if (req.getRequestURI().startsWith("/dang-nhap")) {
             req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
-        } else if (req.getRequestURI().equals("/dang-xuat")) {
+        } else if (req.getRequestURI().startsWith("/dang-xuat")) {
             SessionUtil.getInstance().removeAttribute(req, SystemConstant.SESSION_USER);
         } else {
             resp.sendRedirect("/trang-chu");
