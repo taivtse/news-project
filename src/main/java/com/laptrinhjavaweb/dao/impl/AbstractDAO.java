@@ -75,14 +75,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            if (connection != null) {
-                try {
-                    connection.rollback();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                    throw e;
-                }
-            }
+            connection.rollback();
             e.printStackTrace();
             throw e;
         } finally {
@@ -95,14 +88,6 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-                if (connection != null) {
-                    try {
-                        connection.rollback();
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                        throw e;
-                    }
-                }
                 e.printStackTrace();
                 throw e;
             }
@@ -129,14 +114,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
             connection.commit();
             return generateId;
         } catch (Exception e) {
-            if (connection != null) {
-                try {
-                    connection.rollback();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                    throw e;
-                }
-            }
+            connection.rollback();
             e.printStackTrace();
             throw e;
         } finally {

@@ -9,9 +9,17 @@ import java.util.List;
 public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 
     @Override
-    public List<NewsModel> findAll(Long offset, Long limit) {
-        String sql = "SELECT * FROM news LIMIT ? OFFSET ?";
-        return this.query(sql, new NewsMapper(), limit, offset);
+    public List<NewsModel> findAll(Long offset, Integer limit, String sortExpression, String sortDirection) {
+        StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM news");
+        if (sortExpression != null && sortDirection != null){
+            sqlBuilder.append(" ORDER BY " + sortExpression + " " + sortDirection);
+        }
+
+        if (offset != null && limit != null){
+            sqlBuilder.append(" LIMIT " + limit + " OFFSET " + offset);
+        }
+
+        return this.query(sqlBuilder.toString(), new NewsMapper());
     }
 
     @Override
