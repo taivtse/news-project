@@ -1,8 +1,10 @@
 package com.laptrinhjavaweb.controller.web;
 
+import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.UserModel;
 import com.laptrinhjavaweb.security.AuthenticationFilter;
 import com.laptrinhjavaweb.util.FormUtil;
+import com.laptrinhjavaweb.util.SessionUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,16 +21,16 @@ public class AuthController extends HttpServlet {
         if (req.getRequestURI().equals("/dang-nhap")) {
             req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
         } else if (req.getRequestURI().equals("/dang-xuat")) {
-
+            SessionUtil.getInstance().removeAttribute(req, SystemConstant.SESSION_USER);
         } else {
             resp.sendRedirect("/trang-chu");
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserModel model = FormUtil.populate(UserModel.class, req);
-        String redirectUrl = AuthenticationFilter.of(model.getUsername(), model.getPassword()).getRedirectUrl();
+        String redirectUrl = AuthenticationFilter.of(model.getUsername(), model.getPassword()).getRedirectUrl(req);
         resp.sendRedirect(redirectUrl);
     }
 }

@@ -32,7 +32,6 @@ public class NewsService implements INewsService {
     @Override
     public Long save(NewsModel model) throws Exception {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
         return newsDAO.save(model);
     }
 
@@ -42,7 +41,6 @@ public class NewsService implements INewsService {
         newModel.setCreatedDate(oldModel.getCreatedDate());
         newModel.setCreatedBy(oldModel.getCreatedBy());
         newModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        newModel.setModifiedBy("");
 
         newsDAO.update(newModel);
 

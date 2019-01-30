@@ -1,8 +1,11 @@
 package com.laptrinhjavaweb.controller.admin.api;
 
+import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.NewsModel;
+import com.laptrinhjavaweb.model.UserModel;
 import com.laptrinhjavaweb.service.INewsService;
 import com.laptrinhjavaweb.util.HttpUtil;
+import com.laptrinhjavaweb.util.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +31,9 @@ public class NewsAPI extends HttpServlet {
         resp.setContentType("application/json");
         NewsModel newsModel = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
 
+        UserModel loginModel = (UserModel) SessionUtil.getInstance().getAttribute(req, SystemConstant.SESSION_USER);
+        newsModel.setCreatedBy(loginModel.getUsername());
+
         try {
             Long id = newsService.save(newsModel);
             newsModel = newsService.findById(id);
@@ -43,6 +49,9 @@ public class NewsAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         NewsModel newsModel = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
+
+        UserModel loginModel = (UserModel) SessionUtil.getInstance().getAttribute(req, SystemConstant.SESSION_USER);
+        newsModel.setModifiedBy(loginModel.getUsername());
 
         try {
             newsModel = newsService.update(newsModel);
