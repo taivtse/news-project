@@ -48,7 +48,7 @@
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control"
-                                                                   placeholder="Username" name="userName"/>
+                                                                   placeholder="Username" name="username"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                                             </label>
