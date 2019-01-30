@@ -1,11 +1,12 @@
 package com.laptrinhjavaweb.dao;
 
 import com.laptrinhjavaweb.model.NewsModel;
+import com.laptrinhjavaweb.paging.Pageable;
 
 import java.util.List;
 
 public interface INewsDAO extends IGenericDAO<NewsModel> {
-    List<NewsModel> findAll(Long offset, Integer limit, String sortExpression, String sortDirection);
+    List<NewsModel> findAll(Pageable pageable);
 
     List<NewsModel> findByCategoryId(Long categoryId);
 

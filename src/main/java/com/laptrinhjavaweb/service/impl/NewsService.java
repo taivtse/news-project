@@ -2,6 +2,7 @@ package com.laptrinhjavaweb.service.impl;
 
 import com.laptrinhjavaweb.dao.INewsDAO;
 import com.laptrinhjavaweb.model.NewsModel;
+import com.laptrinhjavaweb.paging.Pageable;
 import com.laptrinhjavaweb.service.INewsService;
 
 import javax.inject.Inject;
@@ -14,8 +15,8 @@ public class NewsService implements INewsService {
     INewsDAO newsDAO;
 
     @Override
-    public List<NewsModel> findAll(Long offset, Integer limit, String sortExpression, String sortDirection) {
-        return newsDAO.findAll(offset, limit, sortExpression, sortDirection);
+    public List<NewsModel> findAll(Pageable pageable) {
+        return newsDAO.findAll(pageable);
     }
 
     @Override

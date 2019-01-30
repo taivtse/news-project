@@ -2,7 +2,10 @@ package com.laptrinhjavaweb.controller.admin;
 
 import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.NewsModel;
+import com.laptrinhjavaweb.paging.Pageable;
+import com.laptrinhjavaweb.paging.PageRequest;
 import com.laptrinhjavaweb.service.INewsService;
+import com.laptrinhjavaweb.sorting.Sorter;
 import com.laptrinhjavaweb.util.FormUtil;
 
 import javax.inject.Inject;
@@ -22,12 +25,13 @@ public class NewsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewsModel model = FormUtil.populate(NewsModel.class, req);
+        Pageable pageable = new PageRequest(model.getPage(), model.getMaxPageItems(),
+                new Sorter(model.getSortExpresion(), model.getSortDirection()));
 
         model.setTotalItems(newsService.count());
         model.setTotalPages((int) Math.ceil((double) model.getTotalItems() / model.getMaxPageItems()));
 
-        Long offset = (model.getPage() - 1) * model.getMaxPageItems();
-        model.setListResult(newsService.findAll(offset, model.getMaxPageItems()));
+        model.setListResult(newsService.findAll(pageable));
 
         req.setAttribute(SystemConstant.MODEL, model);
         req.getRequestDispatcher("/views/admin/news/list.jsp").forward(req, resp);
