@@ -14,8 +14,8 @@ public class NewsService implements INewsService {
     INewsDAO newsDAO;
 
     @Override
-    public List<NewsModel> findAll(Long offset, Long limit) {
-        return newsDAO.findAll(offset, limit);
+    public List<NewsModel> findAll(Long offset, Integer limit, String sortExpression, String sortDirection) {
+        return newsDAO.findAll(offset, limit, sortExpression, sortDirection);
     }
 
     @Override
