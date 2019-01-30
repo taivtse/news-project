@@ -95,6 +95,7 @@
                             <th class="text-primary">Description</th>
                             <th class="text-primary">Created date</th>
                             <th class="text-primary">Created by</th>
+                            <th class="text-primary">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -104,6 +105,19 @@
                                 <td>${news.description}</td>
                                 <td>${news.createdDate}</td>
                                 <td>${news.createdBy}</td>
+                                <td>
+                                    <div class="hidden-sm hidden-xs btn-group">
+                                        <button onclick="showEditFormModal(this)" data-id="${tableList.userId}"
+                                                class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                title="<fmt:message key="label.edit" bundle="${lang}"/>">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </button>
+                                        <button class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                title="<fmt:message key="label.delete" bundle="${lang}"/>">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
