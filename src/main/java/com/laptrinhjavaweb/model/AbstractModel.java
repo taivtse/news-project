@@ -12,10 +12,12 @@ public class AbstractModel<T> {
     private String modifiedBy;
     private Long[] ids;
     private List<T> listResult;
-    private Long maxPageItems = 2L;
+    private Integer maxPageItems = 2;
     private Long totalItems;
     private Integer page = 1;
     private Integer totalPages;
+    private String sortExpresion;
+    private String sortDirection;
 
     public Long getId() {
         return id;
@@ -73,11 +75,11 @@ public class AbstractModel<T> {
         this.listResult = listResult;
     }
 
-    public Long getMaxPageItems() {
+    public Integer getMaxPageItems() {
         return maxPageItems;
     }
 
-    public void setMaxPageItems(Long maxPageItems) {
+    public void setMaxPageItems(Integer maxPageItems) {
         this.maxPageItems = maxPageItems;
     }
 
@@ -89,19 +91,35 @@ public class AbstractModel<T> {
         this.totalItems = totalItems;
     }
 
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public int getTotalPages() {
+    public Integer getTotalPages() {
         return totalPages;
     }
 
-    public void setTotalPages(int totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
+    }
+
+    public String getSortExpresion() {
+        return sortExpresion;
+    }
+
+    public void setSortExpresion(String sortExpresion) {
+        this.sortExpresion = sortExpresion;
+    }
+
+    public String getSortDirection() {
+        return sortDirection;
+    }
+
+    public void setSortDirection(String sortDirection) {
+        this.sortDirection = sortDirection;
     }
 }
