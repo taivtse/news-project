@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.laptrinhjavaweb.dao.ICategoryDAO;
+import com.laptrinhjavaweb.dao.ICategoryDao;
 import com.laptrinhjavaweb.model.CategoryModel;
 import com.laptrinhjavaweb.service.ICategoryService;
 
 public class CategoryService implements ICategoryService{
 
 	@Inject
-	private ICategoryDAO categoryDAO;
+	private ICategoryDao categoryDAO;
 	
 	@Override
 	public List<CategoryModel> findAll() {

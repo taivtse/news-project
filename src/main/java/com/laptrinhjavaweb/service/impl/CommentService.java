@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.service.impl;
 
-import com.laptrinhjavaweb.dao.ICommentDAO;
+import com.laptrinhjavaweb.dao.ICommentDao;
 import com.laptrinhjavaweb.model.CommentModel;
 import com.laptrinhjavaweb.service.ICommentService;
 
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 public class CommentService implements ICommentService {
 
     @Inject
-    ICommentDAO commentDAO;
+    ICommentDao commentDAO;
 
     @Override
     public CommentModel findById(Long id) {

@@ -4,6 +4,6 @@ import com.laptrinhjavaweb.model.CategoryModel;
 
 import java.util.List;
 
-public interface ICategoryDAO extends IGenericDAO<CategoryModel> {
+public interface ICategoryDao extends IGenericDao<CategoryModel> {
 	List<CategoryModel> findAll();
 }

@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.dao.impl;
 
-import com.laptrinhjavaweb.dao.IGenericDAO;
+import com.laptrinhjavaweb.dao.IGenericDao;
 import com.laptrinhjavaweb.mapper.IRowMapper;
 
 import java.math.BigDecimal;
@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractDAO<T> implements IGenericDAO<T> {
+public class AbstractDao<T> implements IGenericDao<T> {
     public Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

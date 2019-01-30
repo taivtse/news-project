@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.service.impl;
 
-import com.laptrinhjavaweb.dao.INewsDAO;
+import com.laptrinhjavaweb.dao.INewsDao;
 import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.paging.Pageable;
 import com.laptrinhjavaweb.service.INewsService;
@@ -12,7 +12,7 @@ import java.util.List;
 public class NewsService implements INewsService {
 
     @Inject
-    INewsDAO newsDAO;
+    INewsDao newsDAO;
 
     @Override
     public List<NewsModel> findAll(Pageable pageable) {

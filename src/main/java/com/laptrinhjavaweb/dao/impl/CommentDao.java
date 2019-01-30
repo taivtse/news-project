@@ -1,9 +1,9 @@
 package com.laptrinhjavaweb.dao.impl;
 
-import com.laptrinhjavaweb.dao.ICommentDAO;
+import com.laptrinhjavaweb.dao.ICommentDao;
 import com.laptrinhjavaweb.model.CommentModel;
 
-public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO {
+public class CommentDao extends AbstractDao<CommentModel> implements ICommentDao {
     @Override
     public void delete(Long id) throws Exception {
         String sql = "DELETE FROM comment WHERE id = ?";

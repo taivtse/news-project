@@ -5,7 +5,7 @@ import com.laptrinhjavaweb.paging.Pageable;
 
 import java.util.List;
 
-public interface INewsDAO extends IGenericDAO<NewsModel> {
+public interface INewsDao extends IGenericDao<NewsModel> {
     List<NewsModel> findAll(Pageable pageable);
 
     List<NewsModel> findByCategoryId(Long categoryId);

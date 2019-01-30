@@ -1,13 +1,13 @@
 package com.laptrinhjavaweb.dao.impl;
 
-import com.laptrinhjavaweb.dao.INewsDAO;
+import com.laptrinhjavaweb.dao.INewsDao;
 import com.laptrinhjavaweb.mapper.impl.NewsMapper;
 import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.paging.Pageable;
 
 import java.util.List;
 
-public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
+public class NewsDao extends AbstractDao<NewsModel> implements INewsDao {
 
     @Override
     public List<NewsModel> findAll(Pageable pageable) {
