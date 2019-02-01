@@ -32,7 +32,8 @@ public class NewsDao extends AbstractDao<NewsModel> implements INewsDao {
     @Override
     public NewsModel findById(Long id) {
         String sql = "SELECT * FROM news WHERE id = ?";
-        return this.query(sql, new NewsMapper(), id).get(0);
+        List<NewsModel> modelList = this.query(sql, new NewsMapper(), id);
+        return modelList.isEmpty() ? null : modelList.get(0);
     }
 
     @Override

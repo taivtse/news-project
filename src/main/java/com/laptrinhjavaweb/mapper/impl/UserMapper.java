@@ -19,12 +19,14 @@ public class UserMapper extends AbstractMapper implements IRowMapper<UserModel> 
             userModel.setFullName(resultSet.getString("fullname"));
             userModel.setActive(resultSet.getBoolean("is_active"));
 
-            if (resultSet.getString("role_name") != null) {
+            try {
                 RoleModel roleModel = new RoleModel();
                 roleModel.setId(resultSet.getLong("role_id"));
                 roleModel.setName(resultSet.getString("role_name"));
                 roleModel.setCode(resultSet.getString("role_code"));
                 userModel.setRole(roleModel);
+            }catch (SQLException ignore) {
+                System.out.println(ignore.getMessage());
             }
 
             return userModel;
