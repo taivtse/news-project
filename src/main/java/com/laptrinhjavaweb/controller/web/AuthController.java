@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/dang-nhap"})
+@WebServlet(urlPatterns = {"/dang-nhap", "/dang-xuat"})
 public class AuthController extends HttpServlet {
 
     @Override
@@ -22,6 +22,7 @@ public class AuthController extends HttpServlet {
             req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
         } else if (req.getRequestURI().startsWith("/dang-xuat")) {
             SessionUtil.getInstance().removeAttribute(req, SystemConstant.SESSION_USER);
+            resp.sendRedirect("/trang-chu");
         } else {
             resp.sendRedirect("/trang-chu");
         }

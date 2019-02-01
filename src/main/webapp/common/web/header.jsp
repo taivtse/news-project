@@ -11,10 +11,16 @@
 				<li class="nav-item active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Services</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <c:choose>
+                    <c:when test="${empty session_user}">
+                        <li class="nav-item"><a class="nav-link" href="/dang-nhap">Đăng nhập</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item"><a class="nav-link">Xin chào, ${session_user.fullName}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/dang-xuat">Đăng xuất</a></li>
+                    </c:otherwise>
+                </c:choose>
+
 			</ul>
 		</div>
 	</div>
