@@ -36,6 +36,12 @@
                         <div id="login-box" class="login-box visible widget-box no-border">
                             <div class="widget-body">
                                 <div class="widget-main">
+                                    <c:if test="${not empty messageResponse}">
+                                        <div class="alert alert-dismissible fade in alert-${alert}">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>${messageResponse}</strong>
+                                        </div>
+                                    </c:if>
                                     <h4 class="header blue lighter bigger">
                                         <i class="ace-icon fa fa-coffee green"></i>
                                         Please Enter Your Information

@@ -18,6 +18,9 @@ public class AbstractModel<T> {
     private Integer totalPages;
     private String sortExpresion;
     private String sortDirection;
+    private String alert;
+    private String message;
+    private String type;
 
     public Long getId() {
         return id;
@@ -121,5 +124,29 @@ public class AbstractModel<T> {
 
     public void setSortDirection(String sortDirection) {
         this.sortDirection = sortDirection;
+    }
+
+    public String getAlert() {
+        return alert;
+    }
+
+    public void setAlert(String alert) {
+        this.alert = alert;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

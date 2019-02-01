@@ -5,4 +5,15 @@ public class SystemConstant {
     public static final String SESSION_USER = "session_user";
     public static final String ROLE_ADMIN = "admin";
     public static final String ROLE_USER = "user";
+    public static final String MESSAGE_TYPE_SUCCESS = "success";
+    public static final String MESSAGE_TYPE_ERROR = "danger";
+    public static final String MESSAGE_RESPONSE = "messageResponse";
+    public static final String ALERT = "alert";
+    public static final String NOT_PERMISSION = "not_permission";
+    public static final String NOT_LOGIN_ = "not_login";
+    public static final String REDIRECT_INSERT = "redirect_insert";
+    public static final String REDIRECT_UPDATE = "redirect_update";
+    public static final String REDIRECT_DELETE = "redirect_delete";
+    public static final String REDIRECT_ERROR = "redirect_error";
+
 }

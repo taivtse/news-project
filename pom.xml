@@ -17,6 +17,7 @@
 		<weld-servlet.version>1.1.0.Final</weld-servlet.version>
         <jackson-databind.version>2.9.8</jackson-databind.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
 
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -44,40 +45,48 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
+		<!-- Sitemesh -->
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
 			<version>${sitemesh.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- Mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
+		<!-- Weld-servlet -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
 			<version>${weld-servlet.version}</version>
 		</dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <!-- Jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <!-- Commons Beanutils -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
         </dependency>
+
+        <!-- Commons Lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
 
     </dependencies>
 
