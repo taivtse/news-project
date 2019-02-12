@@ -26,7 +26,7 @@ public class NewsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewsModel model = FormUtil.populate(NewsModel.class, req);
         Pageable pageable = new PageRequest(model.getPage(), model.getMaxPageItems(),
-                new Sorter(model.getSortExpresion(), model.getSortDirection()));
+                new Sorter(model.getSortExpression(), model.getSortDirection()));
 
         model.setTotalItems(newsService.count());
         model.setTotalPages((int) Math.ceil((double) model.getTotalItems() / model.getMaxPageItems()));

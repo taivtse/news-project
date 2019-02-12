@@ -16,7 +16,7 @@ public class AbstractModel<T> {
     private Long totalItems;
     private Integer page = 1;
     private Integer totalPages;
-    private String sortExpresion;
+    private String sortExpression;
     private String sortDirection;
     private String alert;
     private String message;
@@ -110,12 +110,12 @@ public class AbstractModel<T> {
         this.totalPages = totalPages;
     }
 
-    public String getSortExpresion() {
-        return sortExpresion;
+    public String getSortExpression() {
+        return sortExpression;
     }
 
-    public void setSortExpresion(String sortExpresion) {
-        this.sortExpresion = sortExpresion;
+    public void setSortExpression(String sortExpression) {
+        this.sortExpression = sortExpression;
     }
 
     public String getSortDirection() {

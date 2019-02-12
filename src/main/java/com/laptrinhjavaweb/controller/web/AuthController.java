@@ -22,7 +22,8 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AbstractModel model = FormUtil.populate(AbstractModel.class, req);
-        if (model.getMessage() != null && model.getAlert() != null){
+        if (model.getMessage() != null){
+            model.setAlert(SystemConstant.MESSAGE_TYPE_ERROR);
             MessageUtil.of(ResourceBundleUtil.getString(model.getMessage()), model.getAlert()).buildMessage(req);
         }
 
@@ -41,9 +42,5 @@ public class AuthController extends HttpServlet {
         UserModel model = FormUtil.populate(UserModel.class, req);
         String redirectUrl = AuthenticationFilter.of(model.getUsername(), model.getPassword()).getRedirectUrl(req);
         resp.sendRedirect(redirectUrl);
-    }
-
-    private void buildMessageResponse(HttpServletRequest req){
-
     }
 }

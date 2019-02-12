@@ -28,10 +28,10 @@ public class AuthorizationFilter implements Filter {
                 if (loginModel.getRole().getCode().equals(SystemConstant.ROLE_ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else if (loginModel.getRole().getCode().equals(SystemConstant.ROLE_USER)) {
-                    response.sendRedirect("/dang-nhap?message=not_permission&alert=danger");
+                    response.sendRedirect("/dang-nhap?message=no_permission");
                 }
             } else {
-                response.sendRedirect("/dang-nhap?message=not_login&alert=danger");
+                response.sendRedirect("/dang-nhap?message=no_login");
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

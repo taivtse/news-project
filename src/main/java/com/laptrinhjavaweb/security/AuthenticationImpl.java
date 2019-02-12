@@ -31,7 +31,7 @@ public class AuthenticationImpl implements AuthenticationFilter {
                 return "/trang-chu";
             }
         } else {
-            return "/dang-nhap";
+            return "/dang-nhap?message=login_wrong";
         }
     }
 }
