@@ -2,19 +2,23 @@ package com.laptrinhjavaweb.dao.impl;
 
 import com.laptrinhjavaweb.dao.IGenericDao;
 import com.laptrinhjavaweb.mapper.IRowMapper;
+import com.laptrinhjavaweb.util.ResourceBundleUtil;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AbstractDao<T> implements IGenericDao<T> {
+    private ResourceBundle resourceBundle = ResourceBundle.getBundle("database");
+
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/news-project";
-            String user = "root";
-            String password = "123456789";
+            Class.forName(resourceBundle.getString("db.driver"));
+            String url = resourceBundle.getString("db.url");
+            String user = resourceBundle.getString("db.username");
+            String password = resourceBundle.getString("db.password");
             return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
