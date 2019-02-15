@@ -15,5 +15,7 @@ public class SystemConstant {
     public static final String REDIRECT_UPDATE = "redirect_update";
     public static final String REDIRECT_DELETE = "redirect_delete";
     public static final String REDIRECT_ERROR = "redirect_error";
+    public static final String TYPE_LIST = "list";
+    public static final String TYPE_EDIT = "edit";
 
 }

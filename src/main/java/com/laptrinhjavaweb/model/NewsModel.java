@@ -1,5 +1,7 @@
 package com.laptrinhjavaweb.model;
 
+import java.util.List;
+
 public class NewsModel extends AbstractModel<NewsModel> {
 
     private String title;
@@ -7,6 +9,7 @@ public class NewsModel extends AbstractModel<NewsModel> {
     private String description;
     private String content;
     private Long categoryId;
+    private List<CategoryModel> categoryModelList;
 
     public String getTitle() {
         return title;
@@ -46,5 +49,13 @@ public class NewsModel extends AbstractModel<NewsModel> {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<CategoryModel> getCategoryModelList() {
+        return categoryModelList;
+    }
+
+    public void setCategoryModelList(List<CategoryModel> categoryModelList) {
+        this.categoryModelList = categoryModelList;
     }
 }

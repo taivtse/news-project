@@ -1,5 +1,5 @@
 <c:url value='/admin-news' var="adminNews">
-    <%--<c:param name="urlType" value="url_list"></c:param>--%>
+    <c:param name="type" value="list"></c:param>
 </c:url>
 <div id="sidebar" class="sidebar responsive" data-sidebar="true"
      data-sidebar-scroll="true" data-sidebar-hover="true">

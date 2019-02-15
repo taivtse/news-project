@@ -4,6 +4,7 @@ import com.laptrinhjavaweb.dao.IGenericDao;
 import com.laptrinhjavaweb.mapper.IRowMapper;
 import com.laptrinhjavaweb.util.ResourceBundleUtil;
 
+import javax.sql.rowset.serial.SerialArray;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;

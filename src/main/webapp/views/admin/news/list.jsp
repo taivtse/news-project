@@ -64,21 +64,23 @@
                             <div class="pull-right">
                                 <div class="btn-group btn-overlap">
                                     <div class="ColVis btn-group" title="" data-original-title="Show/hide columns">
-                                        <a href="${listenGuidelineImportUrl}"
+                                        <a href="#"
                                            class="ColVis_Button ColVis_MasterButton btn btn-success btn-sm btn-bold"
                                            style="display: flex; align-items: center">
                                             <span><i class="icon-only  ace-icon ace-icon fa fa-file-excel-o bigger-140"
                                                      style="padding-right: 5px"></i></span>Import
                                         </a>
-                                        <a href="${listenGuidelineEditUrl}"
+                                        <c:url value="/admin-news" var="addNewUrl">
+                                            <c:param name="type" value="edit"></c:param>
+                                        </c:url>
+                                        <a href="${addNewUrl}"
                                            class="ColVis_Button ColVis_MasterButton btn btn-primary btn-sm btn-bold"
                                            style="display: flex; align-items: center">
                                             <span><i class="icon-only  ace-icon ace-icon fa fa-plus bigger-140"
                                                      style="padding-right: 5px"></i></span>Thêm
                                         </a>
                                         <button class="ColVis_Button ColVis_MasterButton btn btn-danger btn-sm btn-bold"
-                                                id="btnDeleteAll" style="display: flex; align-items: center" disabled
-                                                onclick="btnClickEvent(this)">
+                                                id="btnDeleteAll" style="display: flex; align-items: center" disabled>
                                             <span><i class="ace-icon fa fa-trash-o bigger-140"
                                                      style="padding-right: 5px"></i></span>Xoá
                                         </button>
@@ -91,6 +93,10 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
+                            <th class="text-primary center select-cell">
+                                <input type='checkbox' class='ace check-box-element' id='chkCheckAll'><span
+                                    class='lbl'></span>
+                            </th>
                             <th class="text-primary">Title</th>
                             <th class="text-primary">Description</th>
                             <th class="text-primary">Created date</th>
@@ -101,17 +107,26 @@
                         <tbody>
                         <c:forEach items="${model.listResult}" var="news">
                             <tr>
+                                <td class="center select-cell">
+                                    <input type="checkbox" class="ace check-box-element" name="checkList"
+                                           id="checkbox_${news.id}"
+                                           value="${news.id}">
+                                    <span class="lbl"></span>
+                                </td>
                                 <td>${news.title}</td>
                                 <td>${news.description}</td>
                                 <td>${news.createdDate}</td>
                                 <td>${news.createdBy}</td>
                                 <td>
+                                    <c:url var="editURL" value="/admin-news">
+                                        <c:param name="type" value="edit"/>
+                                        <c:param name="id" value="${news.id}"/>
+                                    </c:url>
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <button onclick="showEditFormModal(this)" data-id="${tableList.userId}"
-                                                class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                title="<fmt:message key="label.edit" bundle="${lang}"/>">
+                                        <a href="${editURL}" class="btn btn-xs btn-info" data-toggle="tooltip"
+                                           title="<fmt:message key="label.edit" bundle="${lang}"/>">
                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                        </button>
+                                        </a>
                                         <button class="btn btn-xs btn-danger" data-toggle="tooltip"
                                                 title="<fmt:message key="label.delete" bundle="${lang}"/>">
                                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
@@ -141,6 +156,7 @@
     </div>
 </div>
 <content tag="local_script">
+    <script src="<c:url value="/template/admin/js/global_admin_script.js"/>"></script>
     <script type="text/javascript">
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
